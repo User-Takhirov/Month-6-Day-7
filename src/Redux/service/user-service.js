@@ -50,9 +50,11 @@ export const MainUserApi = createApi({
       invalidatesTags: ["Update"],
     }),
     GetUniqueData: build.query({
-      query: (id) => ({
-        url: `/home-detail/${id}`,
-      }),
+      query: (id) => {
+        return {
+          url: `/todos/${id}`,
+        };
+      },
     }),
   }),
 });

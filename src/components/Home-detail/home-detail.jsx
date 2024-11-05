@@ -1,21 +1,23 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useGetUniqueDataQuery } from "../../Redux/service/user-service";
-import { useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { Box, Container, Typography } from "@mui/material";
 export const HomeDetail = () => {
-  const [searchParams] = useSearchParams();
-  const id = searchParams.get("id");
+  const { id } = useParams();
   console.log(id);
 
   const { data } = useGetUniqueDataQuery(id);
 
   return (
     <>
-      {data && (
-        <div>
-          <h1>{data.title}</h1>
-          <h3>{data.description}</h3>
-        </div>
-      )}
+      <Container>
+        {data && (
+          <Box textAlign={"center"}>
+            <Typography variant="h3">{data.title}</Typography>
+            <Typography variant="h6">{data.description}</Typography>
+          </Box>
+        )}
+      </Container>
     </>
   );
 };
